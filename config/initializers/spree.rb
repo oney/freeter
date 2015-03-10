@@ -12,3 +12,6 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::User"
+
+SpreeMarketplace::Config[:stripe_publishable_key] = 'pk_test_M6sxwuVwqf72nfRslinpW0L1'
+SpreeMarketplace::Config[:stripe_secret_key] = 'sk_test_3aTDSBROCbDYHnABPTlwokA4'
