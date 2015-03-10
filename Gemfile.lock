@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/spree-contrib/spree_i18n.git
+  revision: 3bd3ca824c4dcf0484795befeb726589e45353d5
+  branch: 2-4-stable
+  specs:
+    spree_i18n (3.0.0)
+      friendly_id-globalize
+      globalize (~> 4.0.3)
+      i18n_data (~> 0.5.1)
+      rails-i18n (~> 4.0.1)
+      spree_core (~> 2.4.0)
+
+GIT
   remote: git://github.com/spree/spree_auth_devise.git
   revision: 997382fcb1f6ed78a201ee7016384cfe71745aea
   branch: 2-4-stable
@@ -125,7 +137,12 @@ GEM
       railties (>= 3.2, < 5.0)
     friendly_id (5.0.5)
       activerecord (>= 4.0.0)
+    friendly_id-globalize (1.0.0.alpha1)
+      friendly_id (>= 5.0.0.beta4, < 6.0)
     fssm (0.2.10)
+    globalize (4.0.3)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
     highline (1.6.21)
     hike (1.2.3)
     htmlentities (4.3.3)
@@ -133,6 +150,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    i18n_data (0.5.1)
     jbuilder (2.2.11)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -199,6 +217,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.8)
       sprockets-rails (~> 2.0)
+    rails-i18n (4.0.4)
+      i18n (~> 0.6)
+      railties (~> 4.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -332,6 +353,7 @@ DEPENDENCIES
   spree_auth_devise!
   spree_fancy!
   spree_gateway!
+  spree_i18n!
   spring
   turbolinks
   uglifier (>= 1.3.0)
