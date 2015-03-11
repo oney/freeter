@@ -8,17 +8,6 @@ GIT
       stripe
 
 GIT
-  remote: git://github.com/spree-contrib/spree_drop_ship.git
-  revision: 1843b5c5e167e47440fc84290319daceb6b1ab6d
-  ref: 1843b5c5e167e47440fc84290319daceb6b1ab6d
-  specs:
-    spree_drop_ship (2.4.0.beta)
-      durable_decorator (~> 0.2.0)
-      spree_api
-      spree_backend
-      spree_core (~> 2.4.0)
-
-GIT
   remote: git://github.com/spree-contrib/spree_i18n.git
   revision: 3bd3ca824c4dcf0484795befeb726589e45353d5
   branch: 2-4-stable
@@ -78,6 +67,17 @@ GIT
   branch: 2-4-stable
   specs:
     spree_gateway (2.4.0)
+      spree_core (~> 2.4.0)
+
+GIT
+  remote: https://github.com/oney/spree_drop_ship
+  revision: 9244bb35e4cc4572f32c54f414cbef2fdac77fb5
+  branch: 2-4-beta
+  specs:
+    spree_drop_ship (2.4.0.beta)
+      durable_decorator (~> 0.2.0)
+      spree_api
+      spree_backend
       spree_core (~> 2.4.0)
 
 GEM
