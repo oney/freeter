@@ -22,9 +22,9 @@
       <%= form.label :url, Spree::Supplier.human_attribute_name(:url) %>:<br />
       <%= form.text_field :url, :class => 'fullwidth text' %>
     <% end %>
-    <%= form.field_container :tax_id do %>
-      <%= form.label :tax_id, Spree::Supplier.human_attribute_name(:tax_id) %>:<br />
-      <%= form.text_field :tax_id, :class => 'fullwidth text' %>
+    <%= form.field_container :introduction do %>
+      <%= form.label :introduction, Spree::Supplier.human_attribute_name(:introduction) %>:<br />
+      <%= form.text_field :introduction, :class => 'fullwidth text' %>
     <% end %>
     <% if spree_current_user.admin? %>
       <%= form.field_container :commission_flat_rate do %>

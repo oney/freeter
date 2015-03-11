@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310215028) do
+ActiveRecord::Schema.define(version: 20150311084520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -975,6 +975,7 @@ ActiveRecord::Schema.define(version: 20150310215028) do
     t.string   "tax_id"
     t.string   "token"
     t.string   "slug"
+    t.string   "introduction"
   end
 
   add_index "spree_suppliers", ["active"], name: "index_spree_suppliers_on_active", using: :btree
