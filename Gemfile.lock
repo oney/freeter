@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/oney/spree_drop_ship
-  revision: 9244bb35e4cc4572f32c54f414cbef2fdac77fb5
+  revision: d25d3baf9e1365a2a4004cbf10c55dcf90dfaccf
   branch: 2-4-beta
   specs:
     spree_drop_ship (2.4.0.beta)
