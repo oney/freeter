@@ -22,6 +22,16 @@
       <%= form.label :url, Spree::Supplier.human_attribute_name(:url) %>:<br />
       <%= form.text_field :url, :class => 'fullwidth text' %>
     <% end %>
+    <%= form.field_container :image do %>
+      <%= form.label :image, Spree::Supplier.human_attribute_name(:image) %>:<br />
+      <% if defined?(@object.image) && @object.image %>
+        <%= image_tag @object.image.attachment.url(:product), :itemprop => "image", :style => '  border: solid 1px; padding: 10px; max-width: 340px;' %>
+      <% else %>
+        Not set image
+      <% end %>
+      <br />
+      <%= form.file_field :image %>
+    <% end %>
     <%= form.field_container :introduction do %>
       <%= form.label :introduction, Spree::Supplier.human_attribute_name(:introduction) %>:<br />
       <%= form.text_area :introduction, :class => 'fullwidth text', rows: '6' %>
