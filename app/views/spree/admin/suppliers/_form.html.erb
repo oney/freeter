@@ -25,7 +25,7 @@
     <%= form.field_container :image do %>
       <%= form.label :image, Spree::Supplier.human_attribute_name(:image) %>:<br />
       <% if defined?(@object.image) && @object.image %>
-        <%= image_tag @object.image.attachment.url(:product), :itemprop => "image", :style => '  border: solid 1px; padding: 10px; max-width: 340px;' %>
+        <%= image_tag @object.image.attachment.url(:product), :itemprop => "image", :style => 'border: solid 1px; padding: 10px; max-width: 340px;' %>
       <% else %>
         Not set image
       <% end %>

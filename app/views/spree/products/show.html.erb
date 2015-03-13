@@ -34,6 +34,12 @@
             <%= render :partial => 'cart_form' %>
           </div>
         </div>
+        <div id="product-supplier" data-hook="product_supplier">
+          <h1 class="product-supplier-title" itemprop="name"><%= @supplier.name %></h1>
+          <% if defined?(@supplier.image) && @supplier.image %>
+            <%= image_tag @supplier.image.attachment.url(:product), :itemprop => "image", :style => 'max-width: 340px;' %>
+          <% end %>
+        </div>
 
         <%= render :partial => 'taxons' %>
       </div>
