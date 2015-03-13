@@ -40,13 +40,27 @@ gem 'puma'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem "pry"
+  gem 'pry-rails'
+  gem "pry-remote"
+  gem "pry-byebug"
+  gem 'pry-stack_explorer'
+  gem "faker"
+  gem 'guard'
+end
+
+gem 'validate_url'
+gem 'video_info', '~> 2.4.1'
 
 gem 'spree', '2.4.5'
-gem 'spree_fancy', github: 'spree/spree_fancy', branch: '2-4-stable'
+gem 'spree_fancy', path: '/Users/One/repos/spree_fancy'
+# gem 'spree_fancy', github: 'oney/spree_fancy', branch: '2-4-stable'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-4-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
 gem 'spree_i18n', github: 'spree-contrib/spree_i18n', branch: '2-4-stable'
-gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: '2-4-stable'
+gem 'spree_reviews', path: '/Users/One/repos/spree_reviews'
+# gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: '2-4-stable'
 gem 'spree_drop_ship', git: 'https://github.com/oney/spree_drop_ship', branch: '2-4-beta'
 gem 'spree_marketplace', git: 'git://github.com/oney/spree_marketplace.git'
 gem "spree_comments", github: 'spree/spree_comments', branch: '2-4-stable'

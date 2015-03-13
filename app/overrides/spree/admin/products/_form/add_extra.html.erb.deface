@@ -1,0 +1,13 @@
+<!-- insert_after '[data-hook="admin_product_form_option_types"]' -->
+<div>
+  <%= f.field_container :video_url, class: ['form-group'] do %>
+    <%= f.label :video_url, Spree.t(:video_url) %>
+    <%= f.text_field :video_url, class: 'form-control' %>
+  <% end %>
+</div>
+<div>
+  <%= f.field_container :work_time, class: ['form-group'] do %>
+    <%= f.label :work_time, Spree.t(:work_time) %>
+    <%= f.text_field :work_time, class: 'form-control' %>
+  <% end %>
+</div>

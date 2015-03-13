@@ -24,7 +24,7 @@
     <% end %>
     <%= form.field_container :introduction do %>
       <%= form.label :introduction, Spree::Supplier.human_attribute_name(:introduction) %>:<br />
-      <%= form.text_field :introduction, :class => 'fullwidth text' %>
+      <%= form.text_area :introduction, :class => 'fullwidth text', rows: '6' %>
     <% end %>
     <% if spree_current_user.admin? %>
       <%= form.field_container :commission_flat_rate do %>
