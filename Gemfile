@@ -46,12 +46,13 @@ group :development, :test do
   gem "pry-remote"
   gem "pry-byebug"
   gem 'pry-stack_explorer'
-  gem "faker"
+  gem "ffaker"
   gem 'guard'
 end
 
 gem 'validate_url'
 gem 'video_info', '~> 2.4.1'
+gem 'mailboxer'
 
 gem 'spree', '2.4.5'
 gem 'spree_fancy', path: '../spree_fancy'
