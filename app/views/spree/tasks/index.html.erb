@@ -1,0 +1,14 @@
+<% if @tasks.any? %>
+<ul id="tasks" class="inline task-listing" data-hook>
+  <% @tasks.each do |task| %>
+    <%= link_to(spree.task_path(task)) do %>
+    <li id="task_<%= task.id %>" class="columns sixteen" data-hook="tasks_list_item" itemscope itemtype="http://schema.org/Task">
+      <span><%= task.name %></span>
+      <span><%= task.user.name %></span>
+      <span><%= task.updated_at.strftime("%H:%M:%S") %></span>
+    </li>
+    <% end %>
+  <% end %>
+  <% reset_cycle("classes") %>
+</ul>
+<% end %>

@@ -61,3 +61,17 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+Spree::Core::Engine.add_routes do
+
+  namespace :admin do
+    resources :tasks
+  end
+
+  resources :suppliers, only: [:show, :index]
+  resources :conversations, only: [:show, :index, :new, :create] do
+    collection do
+      post 'send_message'
+    end
+  end
+  resources :tasks
+end

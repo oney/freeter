@@ -1,0 +1,26 @@
+<% if @conversations.any? %>
+  <table class="table" id="listing_conversations">
+    <thead>
+      <tr data-hook="admin_conversations_index_headers">
+        <th><%= Spree.t(:id) %></th>
+        <th><%= Spree.t(:person) %></th>
+        <th><%= Spree.t(:subject) %></th>
+        <th><%= Spree.t(:time) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @conversations.each do |conversation| %>
+        <tr id="<%= spree_dom_id conversation %>" class="<%= cycle('even', 'odd') %>">
+          <td><%= conversation.id %></td>
+          <td><%= conversation.each_other(spree_current_user).name %></td>
+          <td><%= link_to conversation.subject, spree.conversation_path(conversation) %></td>
+          <td class="text-right"><%= conversation.last_message.updated_at.strftime("%H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_conversation) %>
+  </div>
+<% end %>

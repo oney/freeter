@@ -1,0 +1,32 @@
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t(:new_task), new_object_url, { :class => "btn-success", :icon => 'add', :id => 'admin_new_task' } %>
+<% end if can?(:create, Spree::Task) %>
+
+<% if @tasks.any? %>
+  <table class="table" id="listing_tasks">
+    <thead>
+      <tr data-hook="admin_tasks_index_headers">
+        <th><%= Spree.t(:id) %></th>
+        <th><%= Spree.t(:name) %></th>
+        <th class="text-center">
+          <%= Spree.t(:time) %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+          <tr id="<%= spree_dom_id task %>" data-hook="admin_tasks_index_rows" class="<%= cycle('odd', 'even') %>">
+            <td class="id"><%= task.id %></td>
+            <td><%= link_to task.try(:name), edit_admin_task_path(task) %></td>
+            <td class="text-right">
+              <%= task.updated_at.strftime("%H:%M:%S") %>
+            </td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= link_to Spree.t(:add_one), new_object_url %>!
+  </div>
+<% end %>

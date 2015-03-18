@@ -1,0 +1,20 @@
+<% cache [I18n.locale, current_currency, @supplier] do %>
+  <%= @supplier.name %>
+  <% if defined?(@supplier.image) && @supplier.image %>
+    <%= image_tag @supplier.image.attachment.url(:product), :itemprop => "image", :style => 'max-width: 340px;' %>
+  <% end %>
+  <% @products.each do |product| %>
+    <% url = spree.product_path(product) %>
+    <li id="product_<%= product.id %>" class="columns three" data-hook itemscope itemtype="http://schema.org/Product">
+      <% cache(@taxon.present? ? [I18n.locale, current_currency, product] : [I18n.locale, current_currency, product]) do %>
+        <div class="product-image">
+          <%= link_to small_image(product, :itemprop => "image"), url, :itemprop => 'url' %>
+        </div>
+        <%= link_to truncate(product.name, :length => 50), url, :class => 'info', :itemprop => "name", :title => product.name %>
+        <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <span class="price selling" itemprop="price"><%= display_price(product) %>
+        </span>
+      <% end %>
+    </li>
+  <% end %>
+<% end %>

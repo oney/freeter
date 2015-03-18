@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317034453) do
+ActiveRecord::Schema.define(version: 20150317144919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -187,6 +187,19 @@ ActiveRecord::Schema.define(version: 20150317034453) do
   end
 
   add_index "spree_configurations", ["name", "type"], name: "index_spree_configurations_on_name_and_type", using: :btree
+
+  create_table "spree_conversation_infos", force: true do |t|
+    t.integer  "conversation_id"
+    t.integer  "product_id"
+    t.integer  "task_id"
+    t.integer  "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_conversation_infos", ["conversation_id"], name: "index_spree_conversation_infos_on_conversation_id", using: :btree
+  add_index "spree_conversation_infos", ["product_id"], name: "index_spree_conversation_infos_on_product_id", using: :btree
+  add_index "spree_conversation_infos", ["task_id"], name: "index_spree_conversation_infos_on_task_id", using: :btree
 
   create_table "spree_countries", force: true do |t|
     t.string   "iso_name"
@@ -1060,6 +1073,17 @@ ActiveRecord::Schema.define(version: 20150317034453) do
   add_index "spree_suppliers", ["deleted_at"], name: "index_spree_suppliers_on_deleted_at", using: :btree
   add_index "spree_suppliers", ["slug"], name: "index_spree_suppliers_on_slug", unique: true, using: :btree
   add_index "spree_suppliers", ["token"], name: "index_spree_suppliers_on_token", using: :btree
+
+  create_table "spree_tasks", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name",         default: "",   null: false
+    t.text     "description"
+    t.boolean  "is_available", default: true, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_tasks", ["user_id"], name: "index_spree_tasks_on_user_id", using: :btree
 
   create_table "spree_tax_categories", force: true do |t|
     t.string   "name"
