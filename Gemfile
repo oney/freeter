@@ -28,6 +28,7 @@ gem 'spring',        group: :development
 
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem "font-awesome-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -55,13 +56,12 @@ gem 'video_info', '~> 2.4.1'
 gem 'mailboxer'
 
 gem 'spree', '2.4.5'
-gem 'spree_fancy', path: '../spree_fancy'
-# gem 'spree_fancy', github: 'oney/spree_fancy', branch: '2-4-stable'
+gem 'spree_fancy', github: 'oney/spree_fancy', branch: '2-4-stable'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '2-4-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '2-4-stable'
 gem 'spree_i18n', github: 'spree-contrib/spree_i18n', branch: '2-4-stable'
-gem 'spree_reviews', path: '../spree_reviews'
-# gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: '2-4-stable'
+gem 'spree_reviews', github: 'spree-contrib/spree_reviews', branch: '2-4-stable'
 gem 'spree_drop_ship', git: 'https://github.com/oney/spree_drop_ship', branch: '2-4-beta'
 gem 'spree_marketplace', git: 'git://github.com/oney/spree_marketplace.git'
+
 gem "spree_comments", github: 'spree/spree_comments', branch: '2-4-stable'
