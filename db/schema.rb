@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317144919) do
+ActiveRecord::Schema.define(version: 20150328085524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,18 @@ ActiveRecord::Schema.define(version: 20150317144919) do
   add_index "spree_assets", ["viewable_id"], name: "index_assets_on_viewable_id", using: :btree
   add_index "spree_assets", ["viewable_type", "type"], name: "index_assets_on_viewable_type_and_type", using: :btree
 
+  create_table "spree_balances", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "amount",     default: 0, null: false
+    t.integer  "total",      default: 0, null: false
+    t.string   "billing"
+    t.integer  "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_balances", ["user_id"], name: "index_spree_balances_on_user_id", using: :btree
+
   create_table "spree_calculators", force: true do |t|
     t.string   "type"
     t.integer  "calculable_id"
@@ -195,6 +207,7 @@ ActiveRecord::Schema.define(version: 20150317144919) do
     t.integer  "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "shipment_id"
   end
 
   add_index "spree_conversation_infos", ["conversation_id"], name: "index_spree_conversation_infos_on_conversation_id", using: :btree
@@ -565,7 +578,7 @@ ActiveRecord::Schema.define(version: 20150317144919) do
     t.string   "meta_title"
     t.decimal  "avg_rating",           precision: 7, scale: 5, default: 0.0,  null: false
     t.integer  "reviews_count",                                default: 0,    null: false
-    t.integer  "work_time"
+    t.integer  "work_time",                                    default: 5
     t.string   "video_url"
   end
 
@@ -1214,6 +1227,17 @@ ActiveRecord::Schema.define(version: 20150317144919) do
 
   add_index "spree_trackers", ["active"], name: "index_spree_trackers_on_active", using: :btree
 
+  create_table "spree_used_balances", force: true do |t|
+    t.integer "user_id"
+    t.integer "payment_method_id"
+    t.integer "amount",            default: 0,     null: false
+    t.integer "number",            default: 0,     null: false
+    t.boolean "success",           default: false
+  end
+
+  add_index "spree_used_balances", ["payment_method_id"], name: "index_spree_used_balances_on_payment_method_id", using: :btree
+  add_index "spree_used_balances", ["user_id"], name: "index_spree_used_balances_on_user_id", using: :btree
+
   create_table "spree_users", force: true do |t|
     t.string   "encrypted_password",     limit: 128
     t.string   "password_salt",          limit: 128
@@ -1245,6 +1269,7 @@ ActiveRecord::Schema.define(version: 20150317144919) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.integer  "supplier_id"
+    t.integer  "balance",                            default: 0
   end
 
   add_index "spree_users", ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree

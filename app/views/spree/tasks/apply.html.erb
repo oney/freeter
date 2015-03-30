@@ -1,0 +1,14 @@
+<div>
+  詢問任務:<%= link_to @task.name, tasks_path(@task) %>
+</div>
+<%= form_tag submit_task_path(@task) do %>
+  <%= render "spree/shared/error_messages", :target => @conversation %>
+
+  <p class="conversation_body_field">
+    <%= text_area_tag :body, '', :wrap => "virtual", :rows => "10", :cols => "50" %>
+  </p>
+
+  <p class="conversation_submit">
+    <%= submit_tag '送出', :class => "button bg_darkfirst" %>
+  </p>
+<% end %>

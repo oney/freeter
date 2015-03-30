@@ -1,0 +1,13 @@
+<% cache [I18n.locale, current_currency, @task] do %>
+  <div itemscope itemtype="http://schema.org/Task">
+    <div class="columns eight">
+      <%= @task.name %>
+      <%= @task.description %>
+    </div>
+
+    <div class="columns eight">
+      <%= @task.user.name %>
+    </div>
+    <%= button_link_to Spree.t(:apply), apply_task_path(@task), { :class => "btn-success", :icon => 'add', :id => 'apply_task' } %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<div>你現在擁有的餘額是<%= current_spree_user.balance %></div>
+<div>你要消費的金額是<%= current_order.total.to_i %></div>
+<% if current_spree_user.balance < current_order.total.to_i %>
+<div>您的餘額不夠，請前往儲值</div>
+<% else %>
+<div>您的餘額可以支付，請確認付款</div>
+<% end %>
+<input type="hidden" name="payment_source[14][number]" value="<%= current_order.total.to_i %>">

@@ -1,0 +1,12 @@
+<div>
+  詢問商品:<%= link_to @product.name, products_path(@product) %>
+</div>
+<%= form_tag conversations_create_product_path(@product) do %>
+  <p class="conversation_body_field">
+    <%= text_area_tag :body, '', :wrap => "virtual", :rows => "10", :cols => "50" %>
+  </p>
+
+  <p class="conversation_submit">
+    <%= submit_tag '送出', :class => "button bg_darkfirst" %>
+  </p>
+<% end %>

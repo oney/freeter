@@ -1,0 +1,2 @@
+<!-- insert_bottom '.add-to-cart' -->
+<%= link_to Spree.t(:inquiry), products_inquiry_path(@product) %>

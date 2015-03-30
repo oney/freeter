@@ -1,0 +1,4 @@
+<!-- insert_before '#search-bar' -->
+<% if spree_current_user %>
+<li><%= link_to content_tag(:i, '', :class => 'fa fa-comments'), spree.conversations_path, :title => Spree.t(:conversations) %></li>
+<% end %>

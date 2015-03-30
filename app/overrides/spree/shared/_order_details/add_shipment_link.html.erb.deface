@@ -1,0 +1,10 @@
+<!-- insert_bottom '[data-hook="order_item_description"]' -->
+<%= link_to Spree.t(:see_detail), shipment_path(item.inventory_units.first.shipment) %>
+<% remain_time = (order.completed_at + item.product.work_time.days) - Time.now %>
+<% dd, hh = remain_time.abs.divmod(86400) %>
+<% hh, mm = hh.divmod(3600) %>
+<% if remain_time > 0 %>
+剩下<%= dd %>天<%= hh %>小時 %>
+<% else %>
+時間已超過<%= dd %>天<%= hh %>小時 %>，請求退款
+<% end %>

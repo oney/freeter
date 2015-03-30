@@ -1,0 +1,4 @@
+<!-- insert_bottom "[data-hook='admin_tabs']" -->
+<% if try_spree_current_user.try(:supplier?) %>
+  <%= tab :tasks, label: Spree.t(:tasks), match_path: '/tasks', icon: 'map-marker' %>
+<% end %>

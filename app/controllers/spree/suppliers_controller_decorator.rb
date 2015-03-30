@@ -1,4 +1,4 @@
-class Spree::SuppliersController < Spree::StoreController
+Spree::SuppliersController.class_eval do
   before_action :load_supplier, only: :show
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404

@@ -1,3 +1,10 @@
+<% if @conversation.info.product.present? %>
+  <% product = @conversation.info.product %>
+  詢問產品:<%= link_to product.name, products_path(product) %>
+<% elsif @conversation.info.task.present? %>
+  <% task = @conversation.info.task %>
+  詢問任務:<%= link_to task.name, tasks_path(task) %>
+<% end %>
 <table id="product-properties" class="table-display" data-hook>
   <tbody>
     <% @conversation.messages.each do |message| %>

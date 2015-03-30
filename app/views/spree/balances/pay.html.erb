@@ -1,0 +1,11 @@
+<%= form_tag 'https://payment.allpay.com.tw/Cashier/AioCheckOut', id: 'balance_pay_form', authenticity_token: false, enforce_utf8: false do %>
+
+  <% @data.each do |key, value| %>
+    <%= hidden_field_tag key, value %>
+  <% end %>
+
+<% end %>
+
+<script type="text/javascript">
+  $('#balance_pay_form').submit();
+</script>

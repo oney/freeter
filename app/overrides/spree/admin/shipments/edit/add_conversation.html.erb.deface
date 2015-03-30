@@ -1,0 +1,18 @@
+<!-- insert_after '[data-hook="admin_shipment_form_fields"]' -->
+<table class="table-display">
+  <tbody>
+    <% @conversation.messages.each do |message| %>
+      <% css_class = cycle('even', 'odd', :name => "properties") %>
+      <tr class="<%= css_class %>">
+        <td><strong><%= message.sender.name %></strong></td>
+        <td><%= message.body %></td>
+      </tr>
+    <% end %>
+    <% reset_cycle('properties') %>
+  </tbody>
+</table>
+<%= form_tag send_message_admin_shipment_path(@object) do %>
+  <%= render "spree/shared/error_messages", :target => @conversation %>
+  <%= text_area_tag :body, '', :wrap => "virtual", :rows => "10", :cols => "50" %>
+  <%= submit_tag '送出', :class => "button bg_darkfirst" %>
+<% end %>

@@ -65,13 +65,40 @@ Spree::Core::Engine.add_routes do
 
   namespace :admin do
     resources :tasks
+    resources :shipments do
+      member do
+        post 'send_message'
+      end
+    end
   end
 
   resources :suppliers, only: [:show, :index]
-  resources :conversations, only: [:show, :index, :new, :create] do
+  resources :conversations, only: [:show, :index, :create] do
     collection do
       post 'send_message'
     end
   end
-  resources :tasks
+
+  get 'products/:id/inquiry', to: 'products#inquiry', as: 'products_inquiry'
+  post 'products/:id/inquiry', to: 'products#inquiry_create', as: 'products_inquiry_create'
+
+  resources :tasks do
+    member do
+      get 'apply'
+      post 'submit'
+    end
+  end
+  resources :suppliers
+  resources :balances do
+    member do
+      get 'pay'
+    end
+  end
+  post 'balances/notify', to: 'balances#notify'
+  
+  resources :shipments do
+    member do
+      post 'send_message'
+    end
+  end
 end

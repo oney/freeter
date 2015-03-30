@@ -1,0 +1,41 @@
+<%= form_for @balance, :html => { :multipart => true } do |f| %>
+  <fieldset>
+
+    <%= f.field_container :amount do %>
+      <%= f.label :amount, '儲值金額' %>
+      <%= f.select :amount, @amount_list, {class: 'select2 fullwidth', "data-placeholder" => Spree.t(:select_a_amount)} %>
+      <%= f.error_message_on :amount %>
+    <% end %>
+    <%= f.field_container :billing do %>
+      <%= f.label :billing, Spree.t(:billing_way) %>
+      <%= f.select :billing, @billing_list, {class: 'select2 fullwidth'} %>
+      <%= f.error_message_on :billing %>
+    <% end %>
+    <div class="field" id="balance_fee_field">
+      <label for="balance_fee">手續費</label>
+      <input disabled="disabled" id="balance_fee" type="text" value="0">
+    </div>
+    <%= f.field_container :total do %>
+      <%= f.label :total, Spree.t(:total) %>
+      <%= f.text_field :total, {disabled: 'disabled'} %>
+    <% end %>
+    <%= button Spree.t(:submit) %>
+
+  </fieldset>
+<% end %>
+
+  <script type='text/javascript'>
+  $(document).on('change', '#balance_billing, #balance_amount', function() {
+    refresh_total();
+  });
+  $(function(){
+    refresh_total();
+  });
+  function refresh_total(){
+    var calculate_list = <%= @calculate_list.to_json.to_s.html_safe %>;
+    var plus = parseInt(calculate_list[$('#balance_billing').val()]);
+    var amount = parseInt($('#balance_amount').val());
+    $('#balance_total').val(amount+plus);
+    $('#balance_fee').val(plus);
+  }
+  </script>
